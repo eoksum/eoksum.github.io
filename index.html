@@ -99,24 +99,17 @@ demo();
 <!-- Page Content -->
 <div class="w3-padding-large" id="main">
 	
-	<?php
-	if(isset($_GET['success'])) {
-		?>
-		<div class="alert alert-success alert-dismissible">
+	
+		<div style="display: none;" id="thoughtSuccess" class="alert alert-success alert-dismissible">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			<strong>Success!</strong> Your thoughts are now visible to public. Scroll down to see it :)
 		</div>
-		<?php
-	}
-	if(isset($_GET['fail']) || isset($_GET['fail2']) || isset($_GET['fail3'])) {
-		?>
-		<div class="alert alert-danger alert-dismissible">
+		
+		<div style="display: none;" id="thoughtFailure" class="alert alert-danger alert-dismissible">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			<strong>Fail!</strong> I couldn't add your thoughts about me for some reason :/ Please try again. If this problem persists, please email me about this.
 		</div>
-		<?php
-	}
-	?>
+		
   <!-- Header/Home -->
   <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
 	<audio id="player" autoplay controls style="width:100%;">
@@ -158,6 +151,39 @@ demo();
 			
 			
 		}
+		
+		function loadThoughts(item, index) {
+			
+			var img = document.createElement("img");
+			img.src = item["gravatar"];
+			img.alt = "Avatar";
+			img.class = "w3-left w3-circle w3-margin-right";
+			img.style = "width:80px";
+			
+			var sender = document.createElement("p");
+			sender.innerHTML = "<span class=\"w3-large w3-margin-right\">" + item["Name"] + "</span> said <b>" + item["Subject"] + "</b> at " + item["Date"] + " <b><i>(GMT +3)</i></b>";
+			
+			var message = document.createElement("p");
+			message.innerHTML = item["Message"] + "<br>";
+			
+			var thoughtDiv = document.getElementById("thoughtsAboutMe");
+			thoughtDiv.appendChild(img);
+			thoughtDiv.appendChild(sender);
+			thoughtDiv.appendChild(message);
+		}
+		
+		$(document).ready(function(){
+			$("#loadThoughtsButton").click(function(){
+				$.get("https://api.emreoksum.workers.dev/getThoughts", function(data, status){
+					if(status == "success") {
+						
+						document.getElementById("loadThoughtsButton").style.visibility = "none";
+						var thoughts = JSON.parse(data)
+						thoughts.forEach(loadThoughts)
+					}
+				});
+			});
+		});
 		
 	</script>
 	<div style="width:100%;height:20px;background-color:#3d3d3d;display: inline-block;padding: -5px;">
@@ -353,7 +379,7 @@ demo();
     <hr style="width:200px" class="w3-opacity">
 
     <div class="w3-section">
-      <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Istanbul, Turkey</p>
+      <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Istanbul, Turkiye</p>
       <p><a href="tel:00905344839345"><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i></a> Phone: +90 534 483 9345</p>
 	  <p><a href="https://api.whatsapp.com/send?phone=00905344839345"><i class="fa fa-whatsapp fa-fw w3-text-white w3-xxlarge w3-margin-right"></i></a> WhatsApp: +90 534 483 9345</p>
       <p><a href="mailto:ben@emreoksum.com.tr"><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i></a> Email: ben@emreoksum.com.tr</p>
@@ -381,6 +407,13 @@ demo();
 		<?php
 	}
 	?>
+	<button id="loadThoughtsButton" class="w3-button w3-light-grey w3-padding-large" onclick="loadThoughts()">
+		<i class="fas fa-eye"></i>
+		SEE WHAT PEOPLE SAY ABOUT ME
+	</button>
+	<div id="thoughtsAboutMe">
+		
+	</div>
   <!-- End of Thoughts Section -->
   </div>
   <!-- Write thoughts Section -->
