@@ -1,1 +1,432 @@
-<h2>Hello World</h2>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Emrecan Öksüm</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<style>
+body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+.w3-row-padding img {margin-bottom: 12px}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {width: 120px;background: #222;}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {margin-left: 120px}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+</style>
+</head>
+<body class="w3-black">
+
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  <!-- Avatar image in top left corner -->
+  <img src=" data:image/jpeg;base64,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" style="width:100%">
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+    <i class="fa fa-home w3-xxlarge"></i>
+    <p>HOME</p>
+  </a>
+  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-user w3-xxlarge"></i>
+    <p>ABOUT</p>
+  </a>
+  <a href="#photos" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-eye w3-xxlarge"></i>
+    <p>PHOTOS</p>
+  </a>
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-envelope w3-xxlarge"></i>
+    <p>CONTACT</p>
+  </a>
+  <a href="#thoughts" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i id="thoughts_o" class="fa fa-smile-o w3-xxlarge"></i>
+    <p>THOUGHTS</p>
+  </a>
+</nav>
+
+<script>
+
+function sleep(ms) {
+  
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function getRandomInt(min, max) {
+    
+	min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function randomClass() {
+	
+	var emote = [];
+	emote[0] = "fa fa-smile-o";
+	emote[1] = "fa fa-meh-o";
+	emote[2] = "fa fa-frown-o";
+	
+	var rand = getRandomInt(0,2);
+	return emote[rand] + " w3-xxlarge";
+}
+
+async function demo() {
+  
+  await sleep(1000);
+  while(1) {
+    await sleep(1000);
+    document.getElementById("thoughts_o").className = randomClass();
+  }
+}
+
+demo();
+</script>
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
+    <a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">PHOTOS</a>
+    <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
+  </div>
+</div>
+
+<!-- Page Content -->
+<div class="w3-padding-large" id="main">
+	
+	<?php
+	if(isset($_GET['success'])) {
+		?>
+		<div class="alert alert-success alert-dismissible">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>Success!</strong> Your thoughts are now visible to public. Scroll down to see it :)
+		</div>
+		<?php
+	}
+	if(isset($_GET['fail']) || isset($_GET['fail2']) || isset($_GET['fail3'])) {
+		?>
+		<div class="alert alert-danger alert-dismissible">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<strong>Fail!</strong> I couldn't add your thoughts about me for some reason :/ Please try again. If this problem persists, please email me about this.
+		</div>
+		<?php
+	}
+	?>
+  <!-- Header/Home -->
+  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+	<audio id="player" autoplay controls style="width:100%;">
+		<source src="mus/0.mp3" type="audio/mpeg">
+	</audio>
+	<script>
+		// Play the next song when previous one ends.
+		var x = 0;
+		var music = document.getElementById("player");
+		$("#player").bind("ended", function(){
+			
+			x=x+1;
+			music.src = x%4 + ".mp3";
+			music.load();
+			music.play();       
+		});
+		
+		// Play the previous song if visitor wants
+		function previousSong() {
+			
+			var music = document.getElementById("player");
+			
+		}
+		
+		// Play the next song if visitor wants
+		function nextSong() {
+			
+			
+		}
+		
+		// Pause it if the visitor wants
+		function pause() {
+			
+			
+		}
+		
+		// Play it if the visitor wants
+		function play() {
+			
+			
+		}
+		
+	</script>
+	<div style="width:100%;height:20px;background-color:#3d3d3d;display: inline-block;padding: -5px;">
+		<a onclick="previousSong()"><i class="fa fa-fast-backward"></i></a>
+		<a onclick="nextSong()"><i class="fa fa-fast-forward"></i></a>
+	</div>
+	<br>
+    <h1 class="w3-jumbo"><span class="w3-hide-small">I'm</span> Emrecan Öksüm.</h1>
+    <p><i>Web backend developer | Sysadmin | Webmaster</i></p>
+    <img src="https://i.ibb.co/4WgnmwW/kafam.png" alt="Emre'nin Kafası" class="w3-image" width="30%" height="30%">
+  </header>
+
+  <!-- About Section -->
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+    <h2 class="w3-text-light-grey">Who is this guy?</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <p>
+	Independent, Creative, Committed, Hardworking. Thats mostly who I am.<br><br>
+	I was born in 2000 at Istanbul. I always loved computers. By the time I grew, I always had a dream becoming a software developer and creating my own programs that do things for me. I was 12 when I ran my first C++ program. It was a guessing game and it was terrible :)<br><br>I always have my own goals in my life whose must be achieved somehow in the best way possible. Soon or late, I do my best and reach my goals. Thats how things have worked out so far for me.<br><br>I generally overthink, which makes me tired sometimes but thats fine. With that I get to have plenty of time thinking my life choices, wrongs and truths I committed so far. I do it deliberately sometimes just to criticize myself which is the best thing to do if you want to achieve successes.<br><br>If I promise for anything, it won't go wrong. Or in better words, I will always try and do my best to prevent it from going wrong if you have my word for anything possible.<br><br>You can trust me if I tell you to. Everybody makes mistakes. The path to success is to make least mistakes possible <a href="https://lyricstranslate.com/tr/uzun-ince-bir-yoldayim-im-long-narrow-road.html" target="_blank">in this inn with two doors.</a> I stand by my words. You won't see me contradict myself. Whatever I decide in this life, im doing it for the sake of humanity. If you can't see it in my actions, you will see it later. Surely some pieces would be missing.<br><br>I like sharing things. It could be anything. Happiness, memories, wealth, peace... <a href="https://abuaminaelias.com/dailyhadithonline/2012/08/12/not-believer-neighbor-hungry/" target="_blank">Sunan Kübra Hadith 19049</a><br>I am a Muslim. But I don't think i'm very religious. Because religions are meant to teach people the beautiful morality to contribute the global dignity. As long as what people tells about me, I think Im not so far from the beautiful morality every religion has ordered. I of course have mistakes that must be resolved, Im working on them.<br><br>I believe everyone has the right to have freedom of speech. It makes me sad when I see extreme reactions from people when a frame of mind is expressed with words. True or not, everyone needs to be able to express their thoughts.<br><br>Bold and enterprising stereotypes is what we lack nowadays. We need more people with attempts to create a different path from others. I have always tried creating different paths for myself but drawing a path from scratch and creating your own destiny is never as easy as following a path that is already lightened up. Im struggling on creating a new path for myself and anyone that desires to follow it. Which is inevitable for every human being. But will do it sooner or later. 
+    </p>
+    <h3 class="w3-padding-16 w3-text-light-grey">My Skills</h3>
+    <p class="w3-wide">PHP</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:95%"></div>
+    </div>
+    <p class="w3-wide">Python</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:65%"></div>
+    </div>
+    <p class="w3-wide">Javascript</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:20%"></div>
+    </div><br>
+	<hr>
+	<p class="w3-wide">Apache</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:55%"></div>
+    </div><br>
+	<p class="w3-wide">Nginx</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:75%"></div>
+    </div><br>
+	<p class="w3-wide">LiteSpeed</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:65%"></div>
+    </div><br>
+	<hr>
+	<p class="w3-wide">cPanel</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:80%"></div>
+    </div><br>
+	<p class="w3-wide">Plesk</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:70%"></div>
+    </div><br>
+	
+    <!--
+	Not needed.
+	<div class="w3-row w3-center w3-padding-16 w3-section w3-light-grey">
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">11+</span><br>
+        Partners
+      </div>
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">55+</span><br>
+        Projects Done
+      </div>
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">89+</span><br>
+        Happy Clients
+      </div>
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">150+</span><br>
+        Meetings
+      </div>
+    </div>
+	
+    <button class="w3-button w3-light-grey w3-padding-large w3-section">
+      <i class="fa fa-download"></i> Download Resume
+    </button>
+    
+    <!-- Grid for pricing tables
+    <h3 class="w3-padding-16 w3-text-light-grey">My Price</h3>
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half w3-margin-bottom">
+        <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+          <li class="w3-dark-grey w3-xlarge w3-padding-32">Basic</li>
+          <li class="w3-padding-16">Web Design</li>
+          <li class="w3-padding-16">Photography</li>
+          <li class="w3-padding-16">5GB Storage</li>
+          <li class="w3-padding-16">Mail Support</li>
+          <li class="w3-padding-16">
+            <h2>$ 10</h2>
+            <span class="w3-opacity">per month</span>
+          </li>
+          <li class="w3-light-grey w3-padding-24">
+            <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
+          </li>
+        </ul>
+      </div>
+
+      <div class="w3-half">
+        <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+          <li class="w3-dark-grey w3-xlarge w3-padding-32">Pro</li>
+          <li class="w3-padding-16">Web Design</li>
+          <li class="w3-padding-16">Photography</li>
+          <li class="w3-padding-16">50GB Storage</li>
+          <li class="w3-padding-16">Endless Support</li>
+          <li class="w3-padding-16">
+            <h2>$ 25</h2>
+            <span class="w3-opacity">per month</span>
+          </li>
+          <li class="w3-light-grey w3-padding-24">
+            <button class="w3-button w3-white w3-padding-large w3-hover-black">Sign Up</button>
+          </li>
+        </ul>
+      </div>
+    <!-- End Grid/Pricing tables
+    </div>
+    
+    <!-- Testimonials 
+    <h3 class="w3-padding-24 w3-text-light-grey">My Reputation</h3>  
+    <img src="/w3images/bandmember.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
+    <p><span class="w3-large w3-margin-right">Chris Fox.</span> CEO at Mighty Schools.</p>
+    <p>Jane Doe saved us from a web disaster.</p><br>
+    
+    <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
+    <p><span class="w3-large w3-margin-right">Rebecca Flex.</span> CEO at Company.</p>
+    <p>No one is better than Jane Doe.</p>
+  <!-- End About Section
+  </div>
+  
+  <!-- Portfolio Section -->
+  <div class="w3-padding-64 w3-content" id="photos">
+    <h2 class="w3-text-light-grey">My Photos</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <!-- Grid for photos
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half">
+        <img src="/w3images/wedding.jpg" style="width:100%">
+        <img src="/w3images/rocks.jpg" style="width:100%">
+        <img src="/w3images/sailboat.jpg" style="width:100%">
+      </div>
+
+      <div class="w3-half">
+        <img src="/w3images/underwater.jpg" style="width:100%">
+        <img src="/w3images/chef.jpg" style="width:100%">
+        <img src="/w3images/wedding.jpg" style="width:100%">
+        <img src="/w3images/p6.jpg" style="width:100%">
+      </div>
+    <!-- End photo grid
+    </div>-->
+	<!-- InstaWidgets.com Code Start 18-03-2020
+		<script language="javascript" src="https://i1.inwidgets.com/1-eoksum.js"></script>
+	<!-- InstaWidgets.com Code End -->
+						
+  <!-- End Portfolio Section -->
+  </div>
+  
+  <!--<div class="w3-padding-64 w3-content" id="api">
+    <h2 class="w3-text-light-grey">API</h2>
+	<p>Im providing API for various things FOR 5$/mo! feel free to use them.</p>
+    <hr style="width:200px" class="w3-opacity">
+	<p>API Support includes below:<br>
+	- Alexa rank
+	- IP Information
+	- HTTP(s) Proxy Rotator
+	- SOCKS Proxy Rotator
+	- Random User-Agent Generator
+	- Trial Plesk License
+	- COVID-19 Stats
+	- CloudFlare Resolver
+	- Bitcoin Transaction Accelerator
+	<br><br>
+	API Example provided below:
+	</p>
+    <blockquote>
+		
+		ccc
+		ccccc
+		
+		Thinking about providing apis for useful stuff in near future but im kinda busy so will see :)
+		
+		cc
+	</blockquote>
+  </div>-->
+
+  <!-- Contact Section -->
+  <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
+    <h2 class="w3-text-light-grey">Contact Me</h2>
+	<p>Click on icons to contact me!</p>
+    <hr style="width:200px" class="w3-opacity">
+
+    <div class="w3-section">
+      <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Istanbul, Turkey</p>
+      <p><a href="tel:00905344839345"><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i></a> Phone: +90 534 483 9345</p>
+	  <p><a href="https://api.whatsapp.com/send?phone=00905344839345"><i class="fa fa-whatsapp fa-fw w3-text-white w3-xxlarge w3-margin-right"></i></a> WhatsApp: +90 534 483 9345</p>
+      <p><a href="mailto:ben@emreoksum.com.tr"><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i></a> Email: ben@emreoksum.com.tr</p>
+	  <p><a href="mailto:emreoksum@googlemail.com"><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i></a> Email: emreoksum@googlemail.com</p>
+    </div><br>
+  </div>
+  <!-- End of Contact Section -->
+  <!-- Thoughts Section -->
+   <div class="w3-padding-64 w3-content w3-text-grey" id="thoughts">
+	<h3 class="w3-padding-24 w3-text-light-grey">What people say about me?</h3>
+	<p>Below, you can see what visitors of my personal webpage said about me. As I said before, I believe everyone has freedom of speech rights. So, anything you write here will be posted instantly publicly. If you want to add your thoughts as well, keep scrolling down.</p>
+	<hr>
+	<?php
+	
+	foreach($msgs as $msg) {
+		
+		$img = getGravatarLink($msg['Email']);
+		
+		?>
+		
+		<img src="<?=$img;?>" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
+		<p><span class="w3-large w3-margin-right"><?=htmlspecialchars($msg['Name']);?></span> said <b><?=htmlspecialchars($msg['Subject']);?></b> on <?=htmlspecialchars($msg['Date']);?> <b><i>(GMT +3)</i></b></p>
+		<p><?=htmlspecialchars($msg['Message']);?></p><br>
+		
+		<?php
+	}
+	?>
+  <!-- End of Thoughts Section -->
+  </div>
+  <!-- Write thoughts Section -->
+  <div class="w3-padding-64 w3-content w3-text-grey" id="writeYourThoughts">
+	<h2 class="w3-text-light-grey">Say anything about me</h2>
+	<p><b>It will be displayed on this page publicly, to everyone who visits this page.</b><br>For private enquiries, Email or message me.</p>
+	<hr>
+    <form method="post">
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16" type="email" placeholder="Email (Won't be displayed publicly and kept a secret)" required name="Email"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Subject" required name="Subject"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Message" required name="Message"></p>
+	  <p><i>Your IP Address <?=$ip;?> will also be submitted but won't be showed on this page and kept a secret.</i></p>
+	  <?php
+	  
+	  if(isset($error)) {
+		  
+		  ?>
+		  <br>
+		  <p style="color:red;"><?=$error;?></p>
+		  <br>
+		  <?php
+	  }
+	  ?>
+      <p>
+		<div class="g-recaptcha" data-sitekey="6LdQMuIUAAAAALJa_6uJL7eAsN_TmwwPy0BgEx3Y"></div>
+        <button class="w3-button w3-light-grey w3-padding-large" type="submit">
+          <i class="fa fa-paper-plane"></i> LEAVE YOUR THOUGHTS ABOUT ME
+        </button>
+      </p>
+    </form>
+   </div>
+   <!-- End of Write thoughts Section -->
+  
+    <!-- Footer -->
+  <footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+    <a href="https://www.instagram.com/eoksum/" target="_blank"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+    <a href="https://twitter.com/emrecanoksum1" target="_blank"><i class="fa fa-twitter w3-hover-opacity"></i></a>
+    <a href="https://www.linkedin.com/in/emrecan-%C3%B6ks%C3%BCm-5b0b36173/" target="_blank"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+	<a href="https://github.com/eoksum" target="_blank"><i class="fa fa-github"></i></a>
+    <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">w3.css</a></p>
+  <!-- End footer -->
+  </footer>
+
+<!-- END PAGE CONTENT -->
+</div>
+
+</body>
+</html>
