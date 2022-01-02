@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <style>
 body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
@@ -152,7 +152,7 @@ demo();
 			
 		}
 		
-		function loadThoughts(item, index) {
+		function loadThoughts(index, item) {
 			
 			var img = document.createElement("img");
 			img.src = item["gravatar"];
@@ -392,21 +392,6 @@ demo();
 	<h3 class="w3-padding-24 w3-text-light-grey">What people say about me?</h3>
 	<p>Below, you can see what visitors of my personal webpage said about me. As I said before, I believe everyone has freedom of speech rights. So, anything you write here will be posted instantly publicly. If you want to add your thoughts as well, keep scrolling down.</p>
 	<hr>
-	<?php
-	
-	foreach($msgs as $msg) {
-		
-		$img = getGravatarLink($msg['Email']);
-		
-		?>
-		
-		<img src="<?=$img;?>" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:80px">
-		<p><span class="w3-large w3-margin-right"><?=htmlspecialchars($msg['Name']);?></span> said <b><?=htmlspecialchars($msg['Subject']);?></b> on <?=htmlspecialchars($msg['Date']);?> <b><i>(GMT +3)</i></b></p>
-		<p><?=htmlspecialchars($msg['Message']);?></p><br>
-		
-		<?php
-	}
-	?>
 	<button id="loadThoughtsButton" class="w3-button w3-light-grey w3-padding-large" onclick="loadThoughts()">
 		<i class="fas fa-eye"></i>
 		SEE WHAT PEOPLE SAY ABOUT ME
