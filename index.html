@@ -152,7 +152,7 @@ demo();
 			
 		}
 		
-		function loadThoughts(index, item) {
+		function loadThoughts(item, index) {
 			
 			var img = document.createElement("img");
 			img.src = item["gravatar"];
@@ -179,7 +179,7 @@ demo();
 						
 						document.getElementById("loadThoughtsButton").style.visibility = "none";
 						var thoughts = JSON.parse(data)
-						thoughts.forEach(loadThoughts)
+						Object.values(thoughts).forEach(loadThoughts)
 					}
 				});
 			});
