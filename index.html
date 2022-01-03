@@ -152,7 +152,7 @@ demo();
 			
 		}
 		
-		function loadThoughts(item, index) {
+		function loadThoughts(item) {
 			
 			var img = document.createElement("img");
 			img.src = item["gravatar"];
@@ -177,9 +177,12 @@ demo();
 				$.get("https://api.emreoksum.workers.dev/getThoughts", function(data, status){
 					if(status == "success") {
 						
-						document.getElementById("loadThoughtsButton").style.visibility = "none";
+						document.getElementById("loadThoughtsButton").style.display = "none";
 						var thoughts = JSON.parse(data)
-						Object.values(thoughts).forEach(loadThoughts)
+						for (const [key, value] of Object.entries(thoughts)) {
+							
+							loadThoughts(value);
+						}
 					}
 				});
 			});
