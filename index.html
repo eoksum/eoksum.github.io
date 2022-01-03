@@ -179,12 +179,15 @@ demo();
 							sender.innerHTML = "<span class=\"w3-large w3-margin-right\">" + value["Name"] + "</span> said <b>" + value["Subject"] + "</b> at " + value["Date"] + " <b><i>(GMT +3)</i></b>";
 							
 							var message = document.createElement("p");
-							message.innerHTML = value["Message"] + "<br>";
+							message.innerHTML = value["Message"];
+							
+							var lineBreak = document.createElement("br");
 							
 							var thoughtDiv = document.getElementById("thoughtsAboutMe");
 							thoughtDiv.appendChild(img);
 							thoughtDiv.appendChild(sender);
 							thoughtDiv.appendChild(message);
+							thoughtDiv.appendChild(lineBreak);
 						}
 					}
 				});
