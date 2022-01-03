@@ -203,7 +203,7 @@ demo();
 					Email: $('#Email').val(),
 					Subject: $('#Subject').val(),
 					Message: $('#Message').val(),
-					g-recaptcha-response: grr
+					g-recaptcha-response: $(grr)
 				});
 				
 				postAction.fail(function() {
