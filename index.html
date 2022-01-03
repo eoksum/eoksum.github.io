@@ -159,9 +159,9 @@ demo();
 			
 		}
 		
-		function thoughtsFail() {
+		function thoughtsFail(msg = "Post action failed! Something probably went wrong and I'm sorry about that. Things like that is so common in the world of IT. You can reach out to me from contact me section and report what happened if it suits you.") {
 			
-			document.getElementById("thoughtSubmitError").innerHTML = "Post action failed! Something probably went wrong and I'm sorry about that. Things like that is so common in the world of IT. You can reach out to me from contact me section and report what happened if it suits you.";
+			document.getElementById("thoughtSubmitError").innerHTML = msg;
 			document.getElementById("thoughtFailure").style.display = "block";
 		}
 		
@@ -226,7 +226,7 @@ demo();
 						document.getElementById("thoughtSuccess").style.display = "block";
 						window.location.reload();
 					}else{
-						thoughtsFail();
+						thoughtsFail(msg);
 					}
 				});
 			});
