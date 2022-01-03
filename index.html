@@ -219,6 +219,7 @@ demo();
 				});
 				
 				postAction.done(function(data) {
+					alert(data);
 					const msg = data["msg"];
 					alert(msg);
 					const apiStatus = data["status"];
