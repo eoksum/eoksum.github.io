@@ -152,26 +152,6 @@ demo();
 			
 		}
 		
-		function loadThoughts(item) {
-			alert(JSON.stringify(item));
-			var img = document.createElement("img");
-			img.src = item["gravatar"];
-			img.alt = "Avatar";
-			img.class = "w3-left w3-circle w3-margin-right";
-			img.style = "width:80px";
-			
-			var sender = document.createElement("p");
-			sender.innerHTML = "<span class=\"w3-large w3-margin-right\">" + item["Name"] + "</span> said <b>" + item["Subject"] + "</b> at " + item["Date"] + " <b><i>(GMT +3)</i></b>";
-			
-			var message = document.createElement("p");
-			message.innerHTML = item["Message"] + "<br>";
-			
-			var thoughtDiv = document.getElementById("thoughtsAboutMe");
-			thoughtDiv.appendChild(img);
-			thoughtDiv.appendChild(sender);
-			thoughtDiv.appendChild(message);
-		}
-		
 		$(document).ready(function(){
 			$("#loadThoughtsButton").click(function(){
 				$.get("https://api.emreoksum.workers.dev/getThoughts", function(data, status){
@@ -182,7 +162,22 @@ demo();
 						var thoughts = JSON.parse(data)
 						for (const [key, value] of Object.entries(thoughts)) {
 							
-							loadThoughts(value);
+							var img = document.createElement("img");
+							img.src = value["gravatar"];
+							img.alt = "Avatar";
+							img.class = "w3-left w3-circle w3-margin-right";
+							img.style = "width:80px";
+							
+							var sender = document.createElement("p");
+							sender.innerHTML = "<span class=\"w3-large w3-margin-right\">" + value["Name"] + "</span> said <b>" + value["Subject"] + "</b> at " + value["Date"] + " <b><i>(GMT +3)</i></b>";
+							
+							var message = document.createElement("p");
+							message.innerHTML = value["Message"] + "<br>";
+							
+							var thoughtDiv = document.getElementById("thoughtsAboutMe");
+							thoughtDiv.appendChild(img);
+							thoughtDiv.appendChild(sender);
+							thoughtDiv.appendChild(message);
 						}
 					}
 				});
