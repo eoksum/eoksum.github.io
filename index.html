@@ -158,6 +158,7 @@ demo();
 					if(status == "success") {
 						
 						document.getElementById("loadThoughtsButton").style.display = "none";
+						document.getElementById("writeYourThoughts").style.display = "block";
 						
 						for (const [key, value] of Object.entries(data)) {
 							
@@ -179,6 +180,21 @@ demo();
 							thoughtDiv.appendChild(message);
 						}
 					}
+				});
+			});
+			
+			$("#submitThoughtsForm").click(function(event) {
+				
+				event.preventDefault();
+				
+				const action = "https://api.emreoksum.workers.dev/postThoughts";
+				const grr = grecaptcha.getResponse();
+				const postAction = $.post(action, {
+					Name: $('#Name').val(),
+					Email: $('#Email').val(),
+					Subject: $('#Subject').val(),
+					Message: $('#Message').val(),
+					g-recaptcha-response: grr
 				});
 			});
 		});
@@ -392,7 +408,7 @@ demo();
 	<hr>
 	<button id="loadThoughtsButton" class="w3-button w3-light-grey w3-padding-large">
 		<i class="fas fa-eye"></i>
-		SEE WHAT PEOPLE SAY ABOUT ME
+		SEE WHAT PEOPLE SAY ABOUT ME AND MAYBE, WRITE YOUR THOUGHTS ABOUT ME TOO
 	</button>
 	<div id="thoughtsAboutMe">
 		
@@ -400,15 +416,15 @@ demo();
   <!-- End of Thoughts Section -->
   </div>
   <!-- Write thoughts Section -->
-  <div class="w3-padding-64 w3-content w3-text-grey" id="writeYourThoughts">
+  <div style="display: none;" class="w3-padding-64 w3-content w3-text-grey" id="writeYourThoughts">
 	<h2 class="w3-text-light-grey">Say anything about me</h2>
 	<p><b>It will be displayed on this page publicly, to everyone who visits this page.</b><br>For private enquiries, Email or message me.</p>
 	<hr>
     <form id="thoughtSubmitForm" method="post">
-		<p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
-		<p><input class="w3-input w3-padding-16" type="email" placeholder="Email (Won't be displayed publicly and kept a secret)" required name="Email"></p>
-		<p><input class="w3-input w3-padding-16" type="text" placeholder="Subject" required name="Subject"></p>
-		<p><input class="w3-input w3-padding-16" type="text" placeholder="Message" required name="Message"></p>
+		<p><input class="w3-input w3-padding-16" type="text" id="Name" placeholder="Name" required name="Name"></p>
+		<p><input class="w3-input w3-padding-16" type="email" id="Email" placeholder="Email (Won't be displayed publicly and kept a secret)" required name="Email"></p>
+		<p><input class="w3-input w3-padding-16" type="text" id="Subject" placeholder="Subject" required name="Subject"></p>
+		<p><input class="w3-input w3-padding-16" type="text" id="Message" placeholder="Message" required name="Message"></p>
 		<div id="thoughtSubmitErrorDiv">
 			<br>
 			<p id="thoughtSubmitError" style="color:red;"></p>
@@ -416,7 +432,7 @@ demo();
 		</div>
       <p>
 		<div class="g-recaptcha" data-sitekey="6LdQMuIUAAAAALJa_6uJL7eAsN_TmwwPy0BgEx3Y"></div>
-        <button class="w3-button w3-light-grey w3-padding-large" type="submit">
+        <button id="submitThoughtsForm" class="w3-button w3-light-grey w3-padding-large" type="submit">
           <i class="fa fa-paper-plane"></i> LEAVE YOUR THOUGHTS ABOUT ME
         </button>
       </p>
