@@ -159,7 +159,7 @@ demo();
 						
 						document.getElementById("loadThoughtsButton").style.display = "none";
 						alert(data + " " + status);
-						for (const [key, value] of Object.entries(thoughts)) {
+						for (const [key, value] of Object.entries(data)) {
 							
 							var img = document.createElement("img");
 							img.src = value["gravatar"];
