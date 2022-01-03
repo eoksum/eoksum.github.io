@@ -117,6 +117,13 @@ demo();
 	</audio>
 	<script>
 		// Play the next song when previous one ends.
+		if(typeof isSuccessVisible == 'undefined') {
+			
+			var isSuccessVisible = false;
+		}else if(isSuccessVisible) {
+			
+			document.getElementById("thoughtSuccess").style.display = "block";
+		}
 		var x = 0;
 		var music = document.getElementById("player");
 		$("#player").bind("ended", function(){
@@ -182,7 +189,9 @@ demo();
 					}
 				});
 			});
-			
+		});
+		
+		$(document).ready(function() {
 			$("#submitThoughtsForm").click(function(event) {
 				
 				event.preventDefault();
@@ -195,6 +204,17 @@ demo();
 					Subject: $('#Subject').val(),
 					Message: $('#Message').val(),
 					g-recaptcha-response: grr
+				});
+				
+				postAction.fail(function() {
+					document.getElementById("thoughtSubmitError").innerHTML = "Post action failed! Something probably went wrong and I'm sorry about that. Things like that is so common in the world of IT. You can reach out to me from contact me section and report what happened if it suits you.";
+					document.getElementById("thoughtFailure").style.display = "block";
+				});
+				
+				postAction.done(function(data) {
+					const msg = data["msg"];
+					document.getElementById("thoughtSuccess").style.display = "block";
+					window.location.reload();
 				});
 			});
 		});
