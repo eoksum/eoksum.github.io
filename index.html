@@ -219,10 +219,9 @@ demo();
 				});
 				
 				postAction.done(function(data) {
-					alert(data);
-					const msg = data["msg"];
-					alert(msg);
-					const apiStatus = data["status"];
+					const jsonData = JSON.parse(data);
+					const msg = jsonData["msg"];
+					const apiStatus = jsonData["status"];
 					if(apiStatus == "success") {
 						
 						document.getElementById("thoughtSuccess").style.display = "block";
