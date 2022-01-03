@@ -159,6 +159,12 @@ demo();
 			
 		}
 		
+		function thoughtsFail() {
+			
+			document.getElementById("thoughtSubmitError").innerHTML = "Post action failed! Something probably went wrong and I'm sorry about that. Things like that is so common in the world of IT. You can reach out to me from contact me section and report what happened if it suits you.";
+			document.getElementById("thoughtFailure").style.display = "block";
+		}
+		
 		$(document).ready(function(){
 			$("#loadThoughtsButton").click(function(){
 				$.get("https://api.emreoksum.workers.dev/getThoughts", function(data, status){
@@ -209,14 +215,19 @@ demo();
 				});
 				
 				postAction.fail(function() {
-					document.getElementById("thoughtSubmitError").innerHTML = "Post action failed! Something probably went wrong and I'm sorry about that. Things like that is so common in the world of IT. You can reach out to me from contact me section and report what happened if it suits you.";
-					document.getElementById("thoughtFailure").style.display = "block";
+					thoughtsFail();
 				});
 				
 				postAction.done(function(data) {
 					const msg = data["msg"];
-					document.getElementById("thoughtSuccess").style.display = "block";
-					window.location.reload();
+					const apiStatus = data["status"];
+					if(apiStatus == "success") {
+						
+						document.getElementById("thoughtSuccess").style.display = "block";
+						window.location.reload();
+					}else{
+						thoughtsFail();
+					}
 				});
 			});
 		});
