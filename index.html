@@ -404,23 +404,16 @@ demo();
 	<h2 class="w3-text-light-grey">Say anything about me</h2>
 	<p><b>It will be displayed on this page publicly, to everyone who visits this page.</b><br>For private enquiries, Email or message me.</p>
 	<hr>
-    <form method="post">
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
-      <p><input class="w3-input w3-padding-16" type="email" placeholder="Email (Won't be displayed publicly and kept a secret)" required name="Email"></p>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Subject" required name="Subject"></p>
-      <p><input class="w3-input w3-padding-16" type="text" placeholder="Message" required name="Message"></p>
-	  <p><i>Your IP Address <?=$ip;?> will also be submitted but won't be showed on this page and kept a secret.</i></p>
-	  <?php
-	  
-	  if(isset($error)) {
-		  
-		  ?>
-		  <br>
-		  <p style="color:red;"><?=$error;?></p>
-		  <br>
-		  <?php
-	  }
-	  ?>
+    <form id="thoughtSubmitForm" method="post">
+		<p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
+		<p><input class="w3-input w3-padding-16" type="email" placeholder="Email (Won't be displayed publicly and kept a secret)" required name="Email"></p>
+		<p><input class="w3-input w3-padding-16" type="text" placeholder="Subject" required name="Subject"></p>
+		<p><input class="w3-input w3-padding-16" type="text" placeholder="Message" required name="Message"></p>
+		<div id="thoughtSubmitErrorDiv">
+			<br>
+			<p id="thoughtSubmitError" style="color:red;"></p>
+			<br>
+		</div>
       <p>
 		<div class="g-recaptcha" data-sitekey="6LdQMuIUAAAAALJa_6uJL7eAsN_TmwwPy0BgEx3Y"></div>
         <button class="w3-button w3-light-grey w3-padding-large" type="submit">
