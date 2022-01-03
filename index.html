@@ -220,6 +220,7 @@ demo();
 				
 				postAction.done(function(data) {
 					const msg = data["msg"];
+					alert(msg);
 					const apiStatus = data["status"];
 					if(apiStatus == "success") {
 						
